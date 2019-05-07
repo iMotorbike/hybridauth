@@ -130,4 +130,29 @@ class Yahoo extends OAuth2
 
         return $userProfile;
     }
+    
+     public function getUserContacts()
+    {
+        $this->getCurrentUserId();
+        $response = $this->apiRequest('user/'  . $this->userId . '/contacts', 'GET', [ 'format' => 'json']);
+        if (! $response) {
+            return [];
+        }
+        $contacts = [];
+        foreach ($response->contacts->contact as $idx => $entry) {
+            $uc = new User\Contact();
+            foreach ($entry->fields as $idy => $field){
+                switch ($field->type){
+                    case "name":
+                        $uc->displayName = $field->value->givenName;
+                        break;
+                    case "email":
+                        $uc->email = $field->value;
+                        break;
+                }
+            }
+            $contacts[] = $uc;
+        }
+        return $contacts;
+    }
 }
