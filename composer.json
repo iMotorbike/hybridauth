@@ -1,7 +1,7 @@
 {
-    "name": "miguelenes/hybridauth",
+    "name": "imotorbike/hybridauth",
     "description": "PHP Social Authentication Library",
-    "keywords": ["oauth", "openid", "authentication", "authorization", "social", "api", "google", "facebook", "twitter"],
+    "keywords": ["oauth", "openid", "authentication", "authorization", "social", "api", "google", "facebook", "twitter", "yahoo"],
     "homepage": "https://hybridauth.github.io",
     "type": "library",
     "license": "MIT",
